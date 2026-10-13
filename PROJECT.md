@@ -15,15 +15,20 @@ Use the following information as the source of truth. Do not invent additional c
 - Persian name: شرکت سیال نیرو صنعت
 - Industry: Automotive parts manufacturing and supply
 - Established: 2000
-- Supplied English description:
-  > SNS Co., established in 2000, is a trusted automotive parts manufacturer and supplier serving resellers and auto manufacturers with a growing range of reliable, high-quality components. Best known for its hydraulic pumps and accessories, the company has expanded its production to cover a broader portfolio of auto parts designed to meet demanding industry needs. With a strong reputation for consistent quality, competitive pricing, and dependable supply, SNS Co. is a practical partner for businesses looking for proven automotive solutions.
-- Phone: 02645332259
+- Supplied Persian description (current, shown in the About Us dialog):
+  > شرکت سیال نیرو صنعت در سال ۱۳۷۹ به منظور تولید پمپ و ادوات هیدرولیک تأسیس گردید و با گذشت زمان دامنه فعالیت‌های تولیدی خود را گسترش داده و اکنون مجموعه متنوع‌تری از قطعات خودرو را متناسب با نیازها و الزامات سخت‌گیرانه صنعت خودروسازی تولید می‌کند. این شرکت با تکیه بر سابقه، کیفیت پایدار، قیمت‌گذاری رقابتی و تأمین قابل‌اتکا، شریکی مناسب برای کسب‌وکارهایی است که به دنبال راهکارهای اثبات‌شده و قابل‌اعتماد در حوزه قطعات خودرو می‌باشد.
+- English description (established 2000 = 1379 SH):
+  > SNS Co. was established in 2000 to manufacture hydraulic pumps and accessories. Over time, it has expanded its production activities and now produces a more diverse range of automotive parts tailored to the demanding needs and requirements of the automotive industry. Relying on its track record, consistent quality, competitive pricing, and dependable supply, the company is a suitable partner for businesses seeking proven and reliable solutions in the field of automotive parts.
+- Phone (Company): 02645332259
+- Phone (Sales Department): 09021096896
+- Phone (Procurement Department): 09386415001
 - Email: info@sns-co.ir
 - Main website: https://sns-co.ir
 - Instagram: https://www.instagram.com/sayalniroosanat/
 - LinkedIn: https://www.linkedin.com/company/sayal-niroo-sanat-company
 - Google Maps share URL: https://goo.gl/maps/KXoz4iYw1VH2
-- Location text: WHGQ+954, Nazarabad, Alborz Province, Iran
+- Location text (Persian): کرج، نظر آباد، شهرک صنعتی سپهر، رازی جنوبی، اردیبهشت شرقی، شرکت سیال نیرو صنعت
+- Location text (English, English-address convention, smallest to largest): Sayal Niroo Sanat Co., Eastern Ordibehesht St., Southern Razi St., Sepehr Industrial Town, Nazarabad, Karaj, Alborz Province, Iran
 - Languages: Persian and English
 - Audience: potential customers, business partners, resellers, suppliers, manufacturers, and general visitors arriving through a QR code.
 

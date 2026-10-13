@@ -25,8 +25,19 @@ export const company = {
   logoHeight: 498,
 
   /** Phone exactly as supplied: 02645332259. Display groups the same digits for readability. */
-  phoneHref: 'tel:02645332259',
+  /** Supplied company phone numbers, grouped by unit. The company landline is
+   *  the original supplied number; the sales and procurement numbers were
+   *  supplied by the owner. All are used verbatim as tel: targets. */
+  phone: {
+    company: 'tel:02645332259',
+    sales: 'tel:09021096896',
+    procurement: 'tel:09386415001',
+  },
   phoneDisplay: '026 4533 2259',
+
+  /** Product catalogue PDF served from public/assets. The `download` attribute
+   *  on the link makes the browser download it instead of navigating. */
+  catalogueUrl: `${import.meta.env.BASE_URL}assets/product-catalogue.pdf`,
 
   email: 'info@sns-co.ir',
   websiteUrl: 'https://sns-co.ir',
@@ -35,9 +46,9 @@ export const company = {
   linkedinUrl: 'https://www.linkedin.com/company/sayal-niroo-sanat-company',
 
   location: {
-    /** Supplied location text (plus code + locality). Kept verbatim. */
-    text: 'WHGQ+954, Nazarabad, Alborz Province, Iran',
-    /** Exact supplied Google Maps share URL — always used for the map action. */
+    /**
+     * Exact supplied Google Maps share URL — always used for the map action.
+     */
     mapsUrl: 'https://goo.gl/maps/KXoz4iYw1VH2',
     /**
      * Lightweight, key-free Google Maps embed built from the supplied plus
@@ -55,6 +66,9 @@ export interface Strings {
   pageDescription: string;
   skipToContent: string;
   languageNavLabel: string;
+  aboutLabel: string;
+  aboutTitle: string;
+  dialogClose: string;
   logoAlt: string;
   descriptor: string;
   established: string;
@@ -63,12 +77,18 @@ export interface Strings {
   callLabel: string;
   emailLabel: string;
   websiteLabel: string;
-  socialHeading: string;
   instagramLabel: string;
   linkedinLabel: string;
+  downloadLabel: string;
   opensNewTab: string;
+  callDialogTitle: string;
+  callDialogClose: string;
+  callOptionCompany: string;
+  callOptionSales: string;
+  callOptionProcurement: string;
   locationHeading: string;
   addressLabel: string;
+  address: string;
   openMapsLabel: string;
   mapEmbedTitle: string;
   footerText: string;
@@ -78,49 +98,68 @@ export const strings: Record<Language, Strings> = {
   fa: {
     pageTitle: 'شرکت سیال نیرو صنعت | SNS Co.',
     pageDescription:
-      'شرکت سیال نیرو صنعت (SNS)، از سال ۲۰۰۰ تولیدکننده و تأمین‌کننده معتبر قطعات خودرو است؛ بیش از همه شناخته‌شده به‌واسطه پمپ‌های هیدرولیک و طیفی رو به رشد از قطعات باکیفیت.',
+      'شرکت سیال نیرو صنعت (SNS)، از سال ۱۳۷۹ تولیدکننده پمپ و ادوات هیدرولیک و اکنون تولیدکننده مجموعه متنوع‌تری از قطعات خودرو متناسب با نیازهای سخت‌گیرانه صنعت خودروسازی.',
     skipToContent: 'پرش به محتوای اصلی',
     languageNavLabel: 'تغییر زبان',
+    aboutLabel: 'درباره ما',
+    aboutTitle: 'درباره ما',
+    dialogClose: 'بستن',
     logoAlt: 'لوگوی شرکت سیال نیرو صنعت',
     descriptor: 'تولیدکننده و تأمین‌کننده قطعات خودرو',
-    established: 'از سال ۲۰۰۰',
+    established: 'از سال ۱۳۷۹',
     description:
-      'شرکت سیال نیرو صنعت، از سال ۲۰۰۰، تولیدکننده و تأمین‌کننده‌ای معتبر در حوزه قطعات خودرو است که طیفی رو به رشد از قطعات مطمئن و باکیفیت را برای واسطه‌فروشان و خودروسازان عرضه می‌کند. این شرکت که بیش از همه به‌واسطه پمپ‌های هیدرولیک و متعلقات آن‌ها شناخته می‌شود، دامنه تولید خود را گسترش داده است تا سبد گسترده‌تری از قطعات خودرو را که برای پاسخ‌گویی به نیازهای سخت‌گیرانه صنعت طراحی شده‌اند، پوشش دهد. سیال نیرو صنعت با شهرتی که به‌واسطه کیفیت یکدست، قیمت رقابتی و تأمین قابل‌اتکا به دست آورده است، شریکی عملی برای کسب‌وکارهایی است که به‌دنبال راهکارهای خودرویی آزموده‌شده هستند.',
+      'شرکت سیال نیرو صنعت در سال ۱۳۷۹ به منظور تولید پمپ و ادوات هیدرولیک تأسیس گردید و با گذشت زمان دامنه فعالیت‌های تولیدی خود را گسترش داده و اکنون مجموعه متنوع‌تری از قطعات خودرو را متناسب با نیازها و الزامات سخت‌گیرانه صنعت خودروسازی تولید می‌کند. این شرکت با تکیه بر سابقه، کیفیت پایدار، قیمت‌گذاری رقابتی و تأمین قابل‌اتکا، شریکی مناسب برای کسب‌وکارهایی است که به دنبال راهکارهای اثبات‌شده و قابل‌اعتماد در حوزه قطعات خودرو می‌باشد.',
     contactHeading: 'تماس با ما',
     callLabel: 'تماس تلفنی',
     emailLabel: 'ارسال ایمیل',
     websiteLabel: 'وب‌سایت شرکت',
-    socialHeading: 'ما را دنبال کنید',
     instagramLabel: 'اینستاگرام',
     linkedinLabel: 'لینکدین',
+    downloadLabel: 'دانلود کاتالوگ',
     opensNewTab: 'در پنجره‌ای جدید باز می‌شود',
+    callDialogTitle: 'واحدها',
+    callDialogClose: 'بستن',
+    callOptionCompany: 'شرکت',
+    callOptionSales: 'واحد فروش',
+    callOptionProcurement: 'واحد تامین',
     locationHeading: 'موقعیت مکانی',
     addressLabel: 'نشانی',
+    address: 'کرج، نظر آباد، شهرک صنعتی سپهر، رازی جنوبی، اردیبهشت شرقی، شرکت سیال نیرو صنعت',
     openMapsLabel: 'مشاهده در نقشه گوگل',
     mapEmbedTitle: 'نقشه موقعیت شرکت سیال نیرو صنعت',
-    footerText: 'شرکت سیال نیرو صنعت · از سال ۲۰۰۰',
+    footerText: 'شرکت سیال نیرو صنعت · از سال ۱۳۷۹',
   },
   en: {
     pageTitle: 'Sayal Niroo Sanat Co. (SNS Co.)',
     pageDescription:
-      'SNS Co., established in 2000, is a trusted automotive parts manufacturer and supplier, best known for its hydraulic pumps and a growing range of reliable, high-quality components.',
+      'SNS Co., established in 2000 to manufacture hydraulic pumps and accessories, now produces a more diverse range of automotive parts tailored to the demanding needs of the automotive industry.',
     skipToContent: 'Skip to main content',
     languageNavLabel: 'Change language',
+    aboutLabel: 'About Us',
+    aboutTitle: 'About Us',
+    dialogClose: 'Close',
     logoAlt: 'SNS Co. logo',
     descriptor: 'Automotive parts manufacturer & supplier',
     established: 'Established 2000',
     description:
-      'SNS Co., established in 2000, is a trusted automotive parts manufacturer and supplier serving resellers and auto manufacturers with a growing range of reliable, high-quality components. Best known for its hydraulic pumps and accessories, the company has expanded its production to cover a broader portfolio of auto parts designed to meet demanding industry needs. With a strong reputation for consistent quality, competitive pricing, and dependable supply, SNS Co. is a practical partner for businesses looking for proven automotive solutions.',
+      'SNS Co. was established in 2000 to manufacture hydraulic pumps and accessories. Over time, it has expanded its production activities and now produces a more diverse range of automotive parts tailored to the demanding needs and requirements of the automotive industry. Relying on its track record, consistent quality, competitive pricing, and dependable supply, the company is a suitable partner for businesses seeking proven and reliable solutions in the field of automotive parts.',
     contactHeading: 'Contact us',
     callLabel: 'Call us',
     emailLabel: 'Email us',
     websiteLabel: 'Visit website',
-    socialHeading: 'Follow us',
     instagramLabel: 'Instagram',
     linkedinLabel: 'LinkedIn',
+    downloadLabel: 'Download Catalogue',
     opensNewTab: 'opens in a new tab',
+    callDialogTitle: 'Departments',
+    callDialogClose: 'Close',
+    callOptionCompany: 'Company',
+    callOptionSales: 'Sales Department',
+    callOptionProcurement: 'Procurement Department',
     locationHeading: 'Location',
     addressLabel: 'Address',
+    address:
+      'Sayal Niroo Sanat Co., Eastern Ordibehesht St., Southern Razi St., Sepehr Industrial Town, Nazarabad, Karaj, Alborz Province, Iran',
     openMapsLabel: 'Open in Google Maps',
     mapEmbedTitle: 'Map of SNS Co. location',
     footerText: 'SNS Co. · Established 2000',

@@ -124,10 +124,37 @@ main {
   padding-block: 0.75rem;
 }
 
-.site-header__brand {
-  font-weight: 700;
-  font-size: 1.05rem;
+.about-button {
+  appearance: none;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--color-purple);
+  padding: 0.3rem 0.9rem;
+  min-height: 2.25rem;
+  border-radius: var(--radius-control);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.about-button:hover {
+  border-color: var(--color-purple);
+  background-color: var(--color-purple-soft);
+}
+
+/* About Us dialog — reuses the call-dialog layout, wider for the text. */
+.about-dialog {
+  max-width: 26rem;
+}
+
+.about-dialog__text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.9;
+  text-align: start;
+  color: var(--color-text);
 }
 
 .lang-switch {
@@ -220,13 +247,6 @@ main {
   background-color: var(--color-amber);
 }
 
-.identity__description {
-  max-width: 60ch;
-  margin: 1.75rem auto 0;
-  text-align: start;
-  font-size: 0.98rem;
-}
-
 @media (min-width: 768px) {
   .identity {
     padding-block: 3.5rem 2.5rem;
@@ -267,33 +287,39 @@ main {
   padding-block: 1rem;
 }
 
-/* Contact actions ------------------------------------------------------------ */
+/* Contact actions ------------------------------------------------------------
+   One vertical list of uniform stretched actions: icon + label centered at
+   rest; on hover-capable devices the label shifts up and the concrete value
+   (number / address / domain) is revealed. Touch devices keep the clean,
+   centered resting state (no hover is possible there).
+----------------------------------------------------------------------------- */
 
 .contact__actions {
-  display: grid;
-  gap: 0.75rem;
-}
-
-@media (min-width: 640px) {
-  .contact__actions {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
 .action {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.2rem;
-  min-height: 4rem;
-  padding: 0.85rem 1rem;
+  gap: 0;
+  width: 100%;
+  /* Fixed height for every action: enough for label + revealed value, so the
+     size never changes when the value appears. */
+  height: 4.75rem;
+  padding: 0.5rem 1rem;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-control);
   color: var(--color-text);
   text-align: center;
   text-decoration: none;
+  font: inherit;
+  cursor: pointer;
   transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
@@ -313,6 +339,14 @@ main {
   border-color: var(--color-amber-hover);
 }
 
+.action__main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: transform 0.18s ease;
+}
+
 .action__icon {
   color: var(--color-purple);
   flex-shrink: 0;
@@ -323,7 +357,7 @@ main {
 }
 
 .action__label {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--color-text-secondary);
 }
@@ -332,56 +366,114 @@ main {
   color: var(--color-text);
 }
 
+/* The value occupies a fixed reserved slot in the lower part of the button.
+   It is invisible at rest and fades in on hover — the button never resizes. */
 .action__value {
+  position: absolute;
+  inset-inline: 1rem;
+  bottom: 0.45rem;
+  opacity: 0;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  overflow: hidden;
   overflow-wrap: anywhere;
+  transition: opacity 0.2s ease;
 }
 
-/* Social links --------------------------------------------------------------- */
+/* Hover reveal — desktops and other hover-capable pointers only. Keyboard
+   focus gets the same treatment so the values stay reachable without a mouse. */
+@media (hover: hover) and (pointer: fine) {
+  .action:hover .action__main,
+  .action:focus-visible .action__main {
+    transform: translateY(-0.55rem);
+  }
 
-.contact__social {
+  .action:hover .action__value,
+  .action:focus-visible .action__value {
+    opacity: 1;
+  }
+}
+
+/* Call dialog ----------------------------------------------------------------- */
+
+.call-dialog__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-top: 1.25rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--color-border);
-}
-
-.contact__social-label {
-  width: 100%;
-  margin: 0;
-  text-align: center;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--color-text-secondary);
-}
-
-.social-link {
-  display: inline-flex;
   align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background-color: rgba(26, 31, 46, 0.45);
+}
+
+.call-dialog {
+  width: 100%;
+  max-width: 21rem;
+  padding: 1.25rem;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.call-dialog__title {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--color-text);
+}
+
+.call-dialog__options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.call-dialog__option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  min-height: 2.75rem;
-  padding: 0.45rem 1.1rem;
+  min-height: 3rem;
+  padding: 0.5rem 1rem;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 999px;
+  border-radius: var(--radius-control);
   color: var(--color-text);
   font-weight: 600;
   text-decoration: none;
   transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
-.social-link:hover {
+.call-dialog__option:hover {
   border-color: var(--color-purple);
   background-color: var(--color-purple-soft);
 }
 
-.social-link__icon {
+.call-dialog__option-icon {
   color: var(--color-purple);
   flex-shrink: 0;
+}
+
+.call-dialog__close {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: var(--radius-control);
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.call-dialog__close:hover {
+  color: var(--color-text);
 }
 
 /* Location --------------------------------------------------------------------- */

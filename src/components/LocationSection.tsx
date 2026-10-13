@@ -23,7 +23,7 @@ export default function LocationSection({ strings: t }: LocationSectionProps) {
           <span>{t.addressLabel}</span>
         </p>
         <p className="location__address">
-          <bdi>{company.location.text}</bdi>
+          <bdi>{t.address}</bdi>
         </p>
         <a
           className="action location__maps-link"

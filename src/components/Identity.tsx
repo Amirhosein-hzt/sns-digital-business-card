@@ -33,7 +33,6 @@ export default function Identity({ language, strings: t }: IdentityProps) {
       </p>
       <p className="identity__descriptor">{t.descriptor}</p>
       <p className="identity__established">{t.established}</p>
-      <p className="identity__description">{t.description}</p>
     </section>
   );
 }
